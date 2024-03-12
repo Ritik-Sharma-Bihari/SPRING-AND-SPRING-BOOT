@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.apringboot.api.springbootapi.entities.Author;
 import com.apringboot.api.springbootapi.entities.Book;
 import com.apringboot.api.springbootapi.services.Bookservice;
 
@@ -39,7 +41,7 @@ public class BookController {
         Book book = new Book();
         book.setId(100);
         book.setTitle("java by RItik");
-        book.setAuthor("Ritik sharma");
+        // book.setAuthor("Ritik sharma");
 
         return "this url for getting the books details by api controller with @GetMapping method";
     }
@@ -52,7 +54,7 @@ public class BookController {
         Book book = new Book();
         book.setId(100);
         book.setTitle("java by Ritik");
-        book.setAuthor("Ritik sharma");
+        // book.setAuthor("Ritik sharma");
 
         return book;
     }
@@ -92,10 +94,13 @@ public class BookController {
     @PostMapping("/book")
     public ResponseEntity<Book> addBook(@RequestBody Book b) {
         // to get the Book which is created now
+
         Book book = null;
+
         try {
 
             book = this.bookservice.ceateBook(b);
+            
             // return ResponseEntity.status(HttpStatus.CREATED).build();
             if (book == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
