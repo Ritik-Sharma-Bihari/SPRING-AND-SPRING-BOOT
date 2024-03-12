@@ -57,17 +57,6 @@ public class BookController {
         return book;
     }
 
-    // // for bookService of single book
-    // @GetMapping("/book/{id}")
-    // public Book bookservice(@PathVariable("id") int id) {
-
-    // // Bookservice service = new Bookservice();
-    // // service.getBookById(101);
-    // // return bookservice.getBookById(103);
-
-    // return bookservice.getBookById(id);
-    // }
-
     // for bookService of single book by restAPi
     @GetMapping("/book/{id}")
     public ResponseEntity<Book> bookservice(@PathVariable("id") int id) {
@@ -82,14 +71,6 @@ public class BookController {
         return ResponseEntity.of(Optional.of(book));
     }
 
-    // for bookService of All book
-    // @GetMapping("/bookSservice")
-    // public List<Book> bookSservice() {
-
-    // // Bookservice service = new Bookservice();
-    // // service.getAllBooks();
-    // return bookservice.getAllBooks();
-    // }
     // -------------------- ResponseEntity is used to send the data with
     // status-----------------------
     @GetMapping("/bookSservice")
@@ -107,13 +88,6 @@ public class BookController {
     // ---------------------------POST METHOD
     // --------------------------------------------------------
     // request url method(Handler) for create a book
-    // @PostMapping("/book")
-    // public Book addBook(@RequestBody Book b) {
-    // // TODO: process POST request
-    // // to get the Book which is created now
-    // Book book = this.bookservice.ceateBook(b);
-    // return book;
-    // }
 
     @PostMapping("/book")
     public ResponseEntity<Book> addBook(@RequestBody Book b) {
