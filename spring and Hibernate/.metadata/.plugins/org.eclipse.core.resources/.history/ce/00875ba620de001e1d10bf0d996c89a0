@@ -1,0 +1,23 @@
+package springMVC.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class ReController {
+	
+	@RequestMapping("/first")
+	public String First() {
+		
+		System.out.println("first executed");
+		return "";
+	}
+	
+	@RequestMapping("/second")
+	public String Second() {
+		
+		System.out.println("Second Executed");
+		return "";
+	}
+
+}

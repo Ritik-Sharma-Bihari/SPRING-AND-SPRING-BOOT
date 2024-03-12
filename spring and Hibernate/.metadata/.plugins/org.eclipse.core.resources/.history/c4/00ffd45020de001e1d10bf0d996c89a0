@@ -1,0 +1,20 @@
+package springMVC.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ReController {
+	
+	public String First() {
+		
+		System.out.println("first executed");
+		return "";
+	}
+	
+	public String Second() {
+		
+		System.out.println("Second Executed");
+		return "";
+	}
+
+}
