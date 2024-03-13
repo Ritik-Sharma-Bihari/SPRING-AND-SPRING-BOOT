@@ -1,5 +1,7 @@
 package com.apringboot.api.springbootapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,10 +18,11 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     private String title;
     // private String author;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Author author;
 
     public int getId() {

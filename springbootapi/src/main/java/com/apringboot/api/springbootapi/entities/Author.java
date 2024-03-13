@@ -1,10 +1,14 @@
 package com.apringboot.api.springbootapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +23,11 @@ public class Author {
     @Column(name = "last_name")
     private String LastName;
     private String language;
+
+    // here we are using the mappedby so it will not create extra column in table
+    @OneToOne(mappedBy = "author")
+    @JsonBackReference
+    private Book book;
 
     public Author() {
     }
@@ -68,6 +77,14 @@ public class Author {
     public String toString() {
         return "Author [authorId=" + authorId + ", FirstName=" + FirstName + ", LastName=" + LastName + ", language="
                 + language + "]";
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
 }
