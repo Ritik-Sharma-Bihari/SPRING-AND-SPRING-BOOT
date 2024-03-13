@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +53,17 @@ public class FileUploadController {
 
             if (upload) {
                 System.out.println("file uploaded");
-                return ResponseEntity.ok("file uploaded is successfully");
+                // return ResponseEntity.ok("file uploaded is successfully");
+
+                return ResponseEntity.ok(ServletUriComponentsBuilder.fromCurrentContextPath().path("/image/").path(file.getOriginalFilename()).toUriString());
+
+                /*
+                 * String org.springframework.web.multipart.MultipartFile.getOriginalFilename()
+                 * Return the original filename in the client's filesystem.
+                 */
+
+                // ServletUriComponentsBuilder.fromCurrentContextPath() - to get localhost://8081
+
             }
 
         } catch (Exception e) {
