@@ -7,14 +7,21 @@ import javax.persistence.Id;
 //@Entity(name="student_details")
 //@Table(name="students")
 public class Student {
+	public Certificate getCertifi() {
+		return certifi;
+	}
+	public void setCertifi(Certificate certifi) {
+		this.certifi = certifi;
+	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", city=" + city + "]";
+		return "Student [id=" + id + ", name=" + name + ", city=" + city + ", certifi=" + certifi + "]";
 	}
 	@Id
 	private int id;
 	private String name;
 	private String city;
+	private Certificate certifi;
 	public Student(int id, String name, String city) {
 		super();
 		this.id = id;
@@ -43,6 +50,7 @@ public class Student {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
 	
 
 }
