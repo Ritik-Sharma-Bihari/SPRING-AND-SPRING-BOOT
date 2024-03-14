@@ -3,6 +3,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,8 +16,9 @@ public class Answer {
 	private int answerid;
 	private String answer;
 	
-	@OneToOne(mappedBy="answer")
+	//@OneToOne(mappedBy="answer")
 	// to change the name of forgine key name
+	@ManyToOne
 	@JoinColumn(name="question_forifen_key")
 	private Question question;
 	public Answer() {

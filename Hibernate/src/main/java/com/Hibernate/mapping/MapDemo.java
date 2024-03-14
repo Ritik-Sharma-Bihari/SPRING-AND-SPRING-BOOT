@@ -1,5 +1,6 @@
 package com.Hibernate.mapping;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,25 +16,30 @@ public class MapDemo {
 	        System.out.println(factory);
 // --------- creating first object-------------------------------	        
 	        Question q = new Question();
-	        q.setQuestionid(10);
-	        q.setQuestion("what is full stack developer");
+	        q.setQuestionId(12);
+	        q.setQuestion("what is c langauge");
 	        
 	        Answer ans = new Answer();
-	        ans.setAnswerid(101);
-	        ans.setAnswer("to developer front-end and bac-kend part of application");
-	        
-	        q.setAnswer(ans);
-	     // --------- creating second object-------------------------------
-	        Question q2 = new Question();
-	        q2.setQuestionid(11);
-	        q2.setQuestion("what is java");
+	        ans.setAnswerid(104);
+	        ans.setAnswer("a basic programming language");
+	        ans.setQuestion(q);
 	        
 	        Answer ans2 = new Answer();
-	        ans2.setAnswerid(102);
-	        ans2.setAnswer("A Programming Language");
+	        ans2.setAnswerid(105);
+	        ans2.setAnswer("a basic programming language");
+	        ans2.setQuestion(q);
 	        
-	        q2.setAnswer(ans2);
+	        Answer ans3 = new Answer();
+	        ans3.setAnswerid(106);
+	        ans3.setAnswer("is powerfull language for computer ");
+	        ans3.setQuestion(q);
 	        
+	        List<Answer> list = new ArrayList<>();
+	        list.add(ans);
+	        list.add(ans2);
+	        list.add(ans3);
+	        
+	        q.setAnswer(list);
 	        
 	     // getting session
 	        Session session = factory.openSession();
@@ -41,17 +47,21 @@ public class MapDemo {
 	        Transaction beginTransaction = session.beginTransaction();
 	        // to save the transaction(changed)
 	        session.save(q);
-	        session.save(q2);
 	        System.out.println("-----------question data stored in DB--------------");
-	        session.save(ans);
+	        
+	        session.save(ans);       
 	        session.save(ans2);
+	        session.save(ans3);
 	        System.out.println("-----------answer data stored in DB--------------");
 	        // to commit the database changed
 	        beginTransaction.commit();
 	 //printing some question and answer
-	        Question question = session.get(Question.class, 11);
+	        Question question = session.get(Question.class,12 );
 	        System.out.println(question.getQuestion());
-	        System.out.println(question.getAnswer().getAnswer());
+	        //System.out.println(question.getAnswer().getAnswer());
+	        for(Answer an: q.getAnswer()) {
+	        	System.out.println(an.getAnswer());
+	        }
 	        // close the connection
 	        session.close(); 
 	        System.out.println("Done");
