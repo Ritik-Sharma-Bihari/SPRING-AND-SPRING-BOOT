@@ -1,0 +1,7 @@
+package com.Hibernate.mapManytoMany;
+
+public class Project {
+	private int project_id;
+	private String project_title;
+
+}

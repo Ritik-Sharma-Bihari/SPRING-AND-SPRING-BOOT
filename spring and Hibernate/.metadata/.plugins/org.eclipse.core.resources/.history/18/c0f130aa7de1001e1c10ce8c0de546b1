@@ -1,0 +1,44 @@
+package com.Hibernate.mapping;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		
+		 Configuration cfg = new Configuration();
+	        cfg.configure("hiberante.cfg.xml");
+	        SessionFactory factory = cfg.buildSessionFactory();
+	        System.out.println(factory);
+	        
+	        Question q = new Question();
+	        q.setQuestionid(10);
+	        q.setQuestion("what is full stack developer");
+	        
+	        Answer ans = new Answer();
+	        ans.setAnswerid(101);
+	        ans.setAnswer("to developer front-end and bac-kend part of application");
+	        
+	        q.setAnswer(ans);
+	        
+	     // getting session
+	        Session session = factory.openSession();
+	        // to start the transaction
+	        Transaction beginTransaction = session.beginTransaction();
+	        // to save the transaction(changed)
+	        session.save(q);
+	        System.out.println("-----------question data stored in DB--------------");
+	        session.save(ans);
+	        System.out.println("-----------answer data stored in DB--------------");
+	        // to commit the database changed
+	        beginTransaction.commit();
+	        // close the connection
+	        session.close(); 
+	        System.out.println("Done");
+
+	}
+
+}

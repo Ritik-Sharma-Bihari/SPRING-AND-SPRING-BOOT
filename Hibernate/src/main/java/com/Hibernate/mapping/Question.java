@@ -17,7 +17,8 @@ public class Question {
 	private String question;
 //	@OneToOne
 //	@JoinColumn(name="answer_forifen_key")
-	@OneToMany(mappedBy="question")
+	// Eager Loading 
+	@OneToMany(mappedBy="question",fetch=FetchType.EAGER)
 	private List<Answer> answer;
 	
 	public Question() {

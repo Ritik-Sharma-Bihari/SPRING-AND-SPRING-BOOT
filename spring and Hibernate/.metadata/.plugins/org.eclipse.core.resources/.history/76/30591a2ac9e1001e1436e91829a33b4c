@@ -1,0 +1,39 @@
+package com.Hibernate.mapManytoMany;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class AppManyToManyMap {
+
+	public static void main(String[] args) {
+		
+		 Configuration cfg = new Configuration();
+	     cfg.configure("hiberante.cfg.xml");
+	     SessionFactory factory = cfg.buildSessionFactory();
+	     System.out.println(factory);
+//--------------setting details for Employee class and Project class---------------------------------
+	     Employee ep1 = new Employee();
+	     Employee ep2 = new Employee();
+	     
+	     ep1.setEmployee_id(101);
+	     ep1.setEmployee_name("Ritik sharma ji");
+	     
+	     ep2.setEmployee_id(102);
+	     ep2.setEmployee_name("ankkit sharma");
+	     
+	     // getting session
+	      Session session = factory.openSession();
+	      // to start the transaction
+	      Transaction beginTransaction = session.beginTransaction();
+	      // to save the transcation(changed)
+//	      session.save(st);
+//	      session.save(address);
+	      // to commit the database changed
+	      beginTransaction.commit();
+	      // close the connection
+	      session.close(); 
+
+	}
+
+}

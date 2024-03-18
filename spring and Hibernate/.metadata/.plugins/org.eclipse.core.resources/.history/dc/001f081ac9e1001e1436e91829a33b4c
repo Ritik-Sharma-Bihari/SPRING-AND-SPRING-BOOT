@@ -1,0 +1,10 @@
+package com.Hibernate.mapManytoMany;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="employee_details")
+public class Employee {
+
+}

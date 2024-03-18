@@ -1,0 +1,5 @@
+package com.Hibernate.Hibernate;
+
+public class Address {
+
+}

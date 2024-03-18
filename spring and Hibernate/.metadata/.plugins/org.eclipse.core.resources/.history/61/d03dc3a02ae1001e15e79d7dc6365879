@@ -1,0 +1,29 @@
+package com.Hibernate.Hibernate;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class EmbeddClass {
+
+	public static void main(String[] args) {
+		 Configuration cfg = new Configuration();
+	        cfg.configure("hiberante.cfg.xml");
+	        SessionFactory factory = cfg.buildSessionFactory();
+	        System.out.println(factory);
+	        
+	        Student st = new Student();
+	        st.setCity("guntur");
+	        st.setName("Nasmine");
+	        st.setId(101);
+	        Certificate cert = new Certificate();
+	        cert.setCretificateid(201);
+	        cert.setCertificatename("programming in java");
+	        cert.setDuration("6 weeks");
+	        
+	        // here we are passing the object od certificate to student
+	       st.setCertifi(cert);
+	        factory.close();
+
+	}
+
+}

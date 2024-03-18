@@ -1,0 +1,17 @@
+package com.Hibernate.mapManytoMany;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="project_details")
+public class Project {
+	@Id
+	private int project_id;
+	private String project_title;
+	
+	@ManyToMany
+	private List<Employee> employee;
+
+}

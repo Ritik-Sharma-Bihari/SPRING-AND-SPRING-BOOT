@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SpringbootwithpostgresqlApplication",
+            "request": "launch",
+            "mainClass": "springbootwithpostgresql.springbootwithpostgresql.SpringbootwithpostgresqlApplication",
+            "projectName": "springbootwithpostgresql"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootapiApplication<springbootapi>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.apringboot.api.springbootapi.SpringbootapiApplication",
+            "projectName": "springbootapi",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

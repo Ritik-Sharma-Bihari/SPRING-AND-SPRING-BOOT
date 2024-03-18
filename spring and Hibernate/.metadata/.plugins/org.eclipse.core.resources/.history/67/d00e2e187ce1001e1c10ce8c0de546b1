@@ -1,0 +1,8 @@
+package com.Hibernate.mapping;
+
+public class Answer {
+	
+	private int answerod;
+	private String answer;
+
+}
